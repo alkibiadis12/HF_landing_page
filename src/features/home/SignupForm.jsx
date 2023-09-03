@@ -110,6 +110,7 @@ const CheckBox = styled.input`
   &:focus {
     outline: 0;
   }
+  accent-color: var(--color-grey-0);
 `;
 
 const TermsLabel = styled.label`
@@ -138,7 +139,7 @@ function SignupForm() {
   const { register, formState, handleSubmit, reset, setValue, control } =
     useForm({
       defaultValues: {
-        checkbox: false,
+        checkbox: true,
       },
     });
   const { errors } = formState;
@@ -243,7 +244,12 @@ function SignupForm() {
                 rules={{ required: true }}
                 render={({ field }) => (
                   <>
-                    <CheckBox type="checkbox" id="checkbox" {...field} />
+                    <CheckBox
+                      type="checkbox"
+                      id="checkbox"
+                      {...field}
+                      defaultChecked={true}
+                    />
                   </>
                 )}
               />

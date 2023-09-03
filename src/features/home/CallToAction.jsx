@@ -8,7 +8,7 @@ import { devices } from "../../styles/breakpoints";
 
 const StyledCallToAction = styled.section`
   max-width: 120rem;
-  margin: 7rem auto 8rem;
+  margin: 7rem auto 4rem;
   display: flex;
   justify-content: center;
   gap: 3rem;

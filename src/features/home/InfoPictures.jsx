@@ -13,14 +13,16 @@ const StyledInfoPictures = styled.section`
   flex-direction: column;
   justify-content: center;
   gap: 5rem;
-
+  padding-bottom: 10rem;
   @media (${devices.laptopL}) {
-    background-image: none;
-    background-color: #d6d6d6;
+    background-size: cover;
+    /* background-image: none;
+    background-color: #d6d6d6; */
     margin-top: 3rem;
     justify-content: flex-start;
     padding-top: 3rem;
     height: 85rem;
+    padding-bottom: 0;
   }
 
   @media (${devices.xl}) {

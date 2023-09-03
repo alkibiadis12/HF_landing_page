@@ -6,16 +6,17 @@ import { devices } from "../../styles/breakpoints";
 const StyledInfoText = styled.section`
   background-image: url("./img/purplebkg.jpg");
   background-repeat: repeat-x;
-  background-size: contain;
+  background-size: cover;
   height: 581px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   gap: 5rem;
-  margin-top: -10px;
+  margin-top: -10rem;
   @media (${devices.laptopL}) {
-    background-image: none;
-    background-color: #0b001b;
+    /* background-image: none;
+    background-color: #0b001b; */
+    margin-top: -20px;
     justify-content: flex-start;
     padding-top: 5rem;
     height: 56rem;

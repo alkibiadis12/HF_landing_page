@@ -11,12 +11,13 @@ const StyledHero = styled.section`
   background-repeat: repeat-x;
   background-size: contain;
   height: 35.9rem;
-  @media (${devices.laptopL}) {
-    background-image: none;
-    background-color: #0b001b;
-    height: 35.8rem;
+  @media (${devices.xxl}) {
+    background-size: cover;
   }
   @media (${devices.xl}) {
+    background-size: cover;
+    /* background-image: none;
+    background-color: #0b001b; */
     height: 39.5rem;
   }
   @media (${devices.lg}) {

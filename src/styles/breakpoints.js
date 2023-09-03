@@ -8,6 +8,7 @@ const breakpoints = {
   lg: "1024px",
   xl: "1280px",
   laptopL: "1440px",
+  xxl: "1920px",
 };
 
 export const devices = {
@@ -20,4 +21,5 @@ export const devices = {
   lg: `(max-width: ${breakpoints.lg})`,
   laptopL: `(max-width: ${breakpoints.laptopL})`,
   xl: `(max-width: ${breakpoints.xl})`,
+  xxl: `(max-width: ${breakpoints.xxl})`,
 };
