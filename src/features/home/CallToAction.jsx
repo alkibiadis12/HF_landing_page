@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import Column from "../../ui/Column";
 import AppStoreIcon from "../../ui/AppStoreIcon";
 import GooglePlayIcon from "../../ui/GooglePlayIcon";
+import { devices } from "../../styles/breakpoints";
 
 //STYLED COMPONENTS
 //=======================================
@@ -12,6 +13,10 @@ const StyledCallToAction = styled.section`
   display: flex;
   justify-content: center;
   gap: 3rem;
+  @media (${devices.laptopL}) {
+    max-width: 50rem;
+    margin: 5rem auto 2rem;
+  }
 `;
 
 const StoreContainer = styled.div`
@@ -26,6 +31,12 @@ const P = styled.p`
   font-weight: 500;
   color: var(--color-grey-800);
   margin-top: -20px;
+  @media (${devices.lg}) {
+    font-size: 1.6rem;
+  }
+  @media (${devices.sm}) {
+    font-size: 1rem;
+  }
 `;
 
 const Span = styled.span`
@@ -37,6 +48,9 @@ const Span = styled.span`
       color: var(--color-grey-700);
       font-weight: 600;
       font-size: 1.9rem;
+      @media (${devices.sm}) {
+        font-size: 1.2rem;
+      }
     `}
 `;
 

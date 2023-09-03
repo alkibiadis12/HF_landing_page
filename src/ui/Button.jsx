@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "../styles/breakpoints";
 
 const Button = styled.button`
   border: none;
@@ -15,6 +16,14 @@ const Button = styled.button`
 
   &:focus {
     outline: 2px solid var(--color-grey-500);
+  }
+
+  @media (${devices.xl}) {
+    margin-top: 8rem;
+  }
+
+  @media (${devices.sm}) {
+    margin-top: 6rem;
   }
 `;
 

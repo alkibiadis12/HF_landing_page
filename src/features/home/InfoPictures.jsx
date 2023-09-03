@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import Column from "../../ui/Column";
+import { devices } from "../../styles/breakpoints";
 
 //STYLED COMPONENTS
 //=======================================
@@ -13,11 +13,26 @@ const StyledInfoPictures = styled.section`
   flex-direction: column;
   justify-content: center;
   gap: 5rem;
-`;
 
-const H2 = styled.h2`
-  font-size: 2.4rem;
-  text-align: center;
+  @media (${devices.laptopL}) {
+    background-image: none;
+    background-color: #d6d6d6;
+    margin-top: 3rem;
+    justify-content: flex-start;
+    padding-top: 3rem;
+    height: 85rem;
+  }
+
+  @media (${devices.xl}) {
+    height: 55rem;
+  }
+
+  @media (${devices.md}) {
+    height: 45rem;
+  }
+  @media (${devices.sm}) {
+    height: 35rem;
+  }
 `;
 
 const Container = styled.div`
@@ -26,6 +41,38 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   gap: 3rem;
+  @media (${devices.xl}) {
+    gap: 5rem;
+  }
+  @media (${devices.sm}) {
+    gap: 2rem;
+  }
+`;
+
+const H2 = styled.h2`
+  font-size: 2.4rem;
+  text-align: center;
+  @media (${devices.sm}) {
+    font-size: 1.2rem;
+    margin-top: 0;
+  }
+`;
+
+const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+`;
+
+const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (${devices.xl}) {
+    gap: 5px;
+  }
 `;
 
 const P = styled.p`
@@ -33,6 +80,10 @@ const P = styled.p`
   font-weight: 500;
   color: var(--color-grey-900);
   margin-top: -20px;
+  @media (${devices.sm}) {
+    font-size: 0.8rem;
+    margin-top: 0;
+  }
 `;
 
 const Span = styled.span`
@@ -45,6 +96,8 @@ const Span = styled.span`
 `;
 
 const Image = styled.img`
+  width: 140px;
+  height: 140px;
   ${(props) =>
     props.$flex_end &&
     css`
@@ -60,6 +113,34 @@ const Image = styled.img`
     css`
       margin-right: ${props.$margin_right};
     `}
+
+    @media (${devices.xl}) {
+    width: 100px;
+    height: 100px;
+  }
+
+  @media (${devices.md}) {
+    margin: 0;
+    width: 80px;
+    height: 80px;
+  }
+  @media (${devices.sm}) {
+    margin: 0;
+    width: 50px;
+    height: 50px;
+  }
+`;
+
+const PhoneImage = styled.img`
+  @media (${devices.xl}) {
+    height: 400px;
+  }
+  @media (${devices.md}) {
+    height: 250px;
+  }
+  @media (${devices.sm}) {
+    height: 170px;
+  }
 `;
 
 //=======================================
@@ -70,12 +151,10 @@ function InfoPictures() {
       <H2>This is dummy text</H2>
       <Container>
         <Column>
-          <Column $gap="0">
+          <Div>
             <Image
               src="./img/icon1.png"
               alt="icon1"
-              width="140px"
-              height="140px"
               $flex_end="true"
               $margin_right="-10px"
             />
@@ -83,13 +162,11 @@ function InfoPictures() {
               It is a long established{" "}
               <Span $text_align_end="true">fact that a reader</Span>
             </P>
-          </Column>
-          <Column $gap="0">
+          </Div>
+          <Div>
             <Image
               src="./img/icon2.png"
               alt="icon2"
-              width="140px"
-              height="140px"
               $flex_end="true"
               $margin_right="-25px"
             />
@@ -97,36 +174,24 @@ function InfoPictures() {
               It is a long established{" "}
               <Span $text_align_end="true">fact that a reader</Span>
             </P>
-          </Column>
+          </Div>
         </Column>
         <Column>
-          <img src="./img/2mob.png" alt="2mob" width="462px" height="680px" />
+          <PhoneImage src="./img/2mob.png" alt="2mob" />
         </Column>
         <Column>
-          <Column $gap="0">
-            <Image
-              src="./img/icon3.png"
-              alt="icon3"
-              width="140px"
-              height="140px"
-              $margin_left="-10px"
-            />
+          <Div>
+            <Image src="./img/icon3.png" alt="icon3" $margin_left="-10px" />
             <P>
               The standard chunk <Span>of Lorem Ipsum</Span>
             </P>
-          </Column>
-          <Column $gap="0">
-            <Image
-              src="./img/icon4.png"
-              alt="icon4"
-              width="140px"
-              height="140px"
-              $margin_left="-20px"
-            />
+          </Div>
+          <Div>
+            <Image src="./img/icon4.png" alt="icon4" $margin_left="-20px" />
             <P>
               The standard chunk <Span>of Lorem Ipsum</Span>
             </P>
-          </Column>
+          </Div>
         </Column>
       </Container>
     </StyledInfoPictures>

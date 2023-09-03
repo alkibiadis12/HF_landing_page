@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import MainNav from "./MainNav";
 import Logo from "./Logo";
+import { devices } from "../styles/breakpoints";
 
 //STYLED COMPONENTS
 //================================
@@ -15,6 +16,9 @@ const InnerContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (${devices.xl}) {
+    padding: 0 3rem;
+  }
 `;
 
 //================================

@@ -6,6 +6,8 @@ import Button from "../../ui/Button";
 import countryCodes from "../../data/countryCodes";
 import currencyCodes from "../../data/currencyCodes";
 import toast from "react-hot-toast";
+import { devices } from "../../styles/breakpoints";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 //STYLED COMPONENTS
 //=================================================
@@ -14,6 +16,7 @@ const StyledSignupForm = styled.section`
   max-width: 120rem;
   margin: 0 auto;
   padding: 6rem 2rem 0;
+  position: relative;
 `;
 
 const Form = styled.form`
@@ -24,6 +27,11 @@ const LineContainer = styled.div`
   display: flex;
   margin-bottom: 2rem;
   gap: 2rem;
+  @media (${devices.xl}) {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0;
+  }
 `;
 
 const FieldContainer = styled.div`
@@ -35,6 +43,30 @@ const FieldContainer = styled.div`
 const Error = styled.div`
   font-size: 1.4rem;
   color: var(--color-red-700);
+  @media (${devices.sm}) {
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+`;
+
+const CheckBoxError = styled.div`
+  font-size: 1.4rem;
+  color: var(--color-red-700);
+  @media (${devices.xl}) {
+    position: absolute;
+    bottom: 4.5rem;
+    left: 38rem;
+  }
+  @media (${devices.md}) {
+    bottom: 5rem;
+    left: 25rem;
+  }
+  @media (${devices.sm}) {
+    font-size: 0.8rem;
+    font-weight: 600;
+    bottom: 4.5rem;
+    left: 7.5rem;
+  }
 `;
 
 const CheckBoxContainer = styled.div`
@@ -42,6 +74,25 @@ const CheckBoxContainer = styled.div`
   gap: 1rem;
   width: 28rem;
   height: 41px;
+  @media (${devices.xl}) {
+    position: absolute;
+    bottom: 7rem;
+    left: 38rem;
+  }
+
+  @media (${devices.md}) {
+    bottom: 8rem;
+    left: 25rem;
+  }
+
+  @media (${devices.sm}) {
+    bottom: 6.2rem;
+    left: 7.5rem;
+  }
+  @media (${devices.xs}) {
+    bottom: 6.2rem;
+    left: 3.5rem;
+  }
 `;
 
 const CheckBox = styled.input`
@@ -66,6 +117,10 @@ const PhoneContainer = styled.div`
   gap: 1rem;
 `;
 
+const Span = styled.span`
+  display: block;
+`;
+
 //=================================================
 
 function SignupForm() {
@@ -76,6 +131,7 @@ function SignupForm() {
       },
     });
   const { errors } = formState;
+  const isUpTo640Device = useMediaQuery("only screen and (max-width : 640px)");
 
   function onSubmit({
     firstName,
@@ -125,9 +181,15 @@ function SignupForm() {
               type="text"
               id="firstName"
               placeholder="First Name"
-              {...register("firstName", { required: "This field is required" })}
+              {...register("firstName", {
+                required: "First Name is required",
+                minLength: {
+                  value: 2,
+                  message: "First name must be at least 2 characters long",
+                },
+              })}
             />
-            {errors?.firstName && <Error>First name is required.</Error>}
+            {errors?.firstName && <Error>{errors.firstName.message}</Error>}
           </FieldContainer>
 
           <FieldContainer>
@@ -135,9 +197,15 @@ function SignupForm() {
               type="text"
               id="lastName"
               placeholder="Last Name"
-              {...register("lastName", { required: "This field is required" })}
+              {...register("lastName", {
+                required: "Last Name is required",
+                minLength: {
+                  value: 2,
+                  message: "Last name must be at least 2 characters long",
+                },
+              })}
             />
-            {errors?.lastName && <Error>Last name is required.</Error>}
+            {errors?.lastName && <Error>{errors.lastName.message}</Error>}
           </FieldContainer>
 
           <FieldContainer>
@@ -146,14 +214,14 @@ function SignupForm() {
               id="email"
               placeholder="Email"
               {...register("email", {
-                required: "This field is required",
+                required: "Email is required",
                 pattern: {
                   value: /\S+@\S+\.\S+/,
                   message: "Please provide a valid email address",
                 },
               })}
             />
-            {errors?.email && <Error>Email is required.</Error>}
+            {errors?.email && <Error>{errors.email.message}</Error>}
           </FieldContainer>
 
           <FieldContainer>
@@ -173,7 +241,9 @@ function SignupForm() {
                 <TermsSpan>Trading Forex & CFDs is risky</TermsSpan>
               </TermsLabel>
             </CheckBoxContainer>
-            {errors.checkbox && <Error>You must agree with the terms</Error>}
+            {errors.checkbox && (
+              <CheckBoxError>You must agree with the terms</CheckBoxError>
+            )}
           </FieldContainer>
         </LineContainer>
 
@@ -181,7 +251,7 @@ function SignupForm() {
           <FieldContainer>
             <Select
               {...register("country", {
-                required: "This field is required",
+                required: "Country of residence is required.",
               })}
               onChange={(e) => handleCountryChange(e)}
             >
@@ -192,9 +262,7 @@ function SignupForm() {
                 </option>
               ))}
             </Select>
-            {errors?.country && (
-              <Error>Country of residence is required.</Error>
-            )}
+            {errors?.country && <Error>{errors.country.message}</Error>}
           </FieldContainer>
 
           <PhoneContainer>
@@ -205,7 +273,7 @@ function SignupForm() {
                 id="countryCode"
                 placeholder="+359"
                 {...register("countryCode", {
-                  required: "This field is required",
+                  required: "Country code is required",
                   validate: (value) => {
                     const isValid = countryCodes.find(
                       (country) => country.dial_code === value
@@ -214,12 +282,16 @@ function SignupForm() {
                   },
                 })}
               />
-              {errors?.countryCode && <Error>Country code is required.</Error>}
+              {errors?.countryCode && (
+                <Error>
+                  C.Code <Span>is required</Span>
+                </Error>
+              )}
             </FieldContainer>
 
             <FieldContainer>
               <Input
-                width="20rem"
+                width={isUpTo640Device ? "17rem" : "20rem"}
                 type="text"
                 id="phoneNumber"
                 placeholder="Phone Number"
@@ -240,7 +312,7 @@ function SignupForm() {
           <FieldContainer>
             <Select
               {...register("currency", {
-                required: "This field is required.",
+                required: "Currency is required.",
               })}
             >
               {currencyCodes.map((currencyCode) => (
@@ -249,7 +321,7 @@ function SignupForm() {
                 </option>
               ))}
             </Select>
-            {errors?.currency && <Error>Currency is required.</Error>}
+            {errors?.currency && <Error>{errors.currency.message}</Error>}
           </FieldContainer>
 
           <FieldContainer>

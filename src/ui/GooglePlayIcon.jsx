@@ -1,3 +1,17 @@
+import styled from "styled-components";
+import { devices } from "../styles/breakpoints";
+
+//STYLED COMPONENTS
+//====================
+const Image = styled.img`
+  height: 82px;
+  @media (${devices.sm}) {
+    height: 32px;
+  }
+`;
+
+//====================
+
 export default function GooglePlayIcon() {
   return (
     <a
@@ -5,7 +19,7 @@ export default function GooglePlayIcon() {
       target="_blank"
       rel="noreferrer"
     >
-      <img src="./img/googleplay.png" alt="googleplay-icon" height="82px" />
+      <Image src="./img/googleplay.png" alt="googleplay-icon" />
     </a>
   );
 }

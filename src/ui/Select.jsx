@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { devices } from "../styles/breakpoints";
 
 const Select = styled.select`
   ${(props) =>
@@ -8,6 +9,9 @@ const Select = styled.select`
         `
       : css`
           width: 28rem;
+          @media (${devices.sm}) {
+            width: 25rem;
+          }
         `}
   height: 41px;
   border: 1px solid var(--color-grey-400);
@@ -26,6 +30,10 @@ const Select = styled.select`
   background-repeat: no-repeat;
   background-position: right 1.5rem top 50%;
   background-size: 1.2rem auto;
+
+  @media (${devices.sm}) {
+    font-size: 1.2rem;
+  }
 `;
 
 export default Select;

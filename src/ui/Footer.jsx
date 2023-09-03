@@ -7,6 +7,8 @@ import {
   AiOutlinePhone,
   AiOutlineMessage,
 } from "react-icons/ai";
+import { devices } from "../styles/breakpoints";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 //STYLED COMPONENTS
 //============================================
@@ -23,11 +25,32 @@ const Container = styled.div`
   align-items: flex-start;
   padding-top: 4rem;
   padding-bottom: 18rem;
+  @media (${devices.xl}) {
+    padding: 4rem 4rem 20rem 4rem;
+  }
+  @media (${devices.md}) {
+    padding: 4rem 0 18rem 0;
+    height: 60rem;
+    gap: 5rem;
+    margin-left: 7rem;
+  }
+  @media (${devices.sm}) {
+    height: 45rem;
+    flex-direction: column;
+    gap: 3rem;
+    margin-left: 7rem;
+  }
+  @media (${devices.mobileL}) {
+    height: 55rem;
+  }
 `;
 
 const H6 = styled.h6`
   font-size: 1.4rem;
   color: var(--color-grey-300);
+  @media (${devices.sm}) {
+    font-size: 1.2rem;
+  }
 `;
 
 const FlexContainer = styled.div`
@@ -35,6 +58,13 @@ const FlexContainer = styled.div`
   align-items: center;
   gap: 3.5rem;
   margin-right: 4rem;
+  @media (${devices.xl}) {
+    gap: 2rem;
+  }
+  @media (${devices.md}) {
+    flex-wrap: wrap;
+    gap: 3.5rem;
+  }
 `;
 
 const FlexLink = styled.a`
@@ -43,6 +73,10 @@ const FlexLink = styled.a`
   gap: 1.5rem;
   font-size: 1.4rem;
   color: var(--color-grey-300);
+  @media (${devices.sm}) {
+    font-size: 1rem;
+    gap: 1rem;
+  }
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -51,6 +85,9 @@ const StyledNavLink = styled(NavLink)`
     color: var(--color-grey-300);
     font-size: 1.4rem;
     transition: all 0.3s;
+    @media (${devices.sm}) {
+      font-size: 0.8rem;
+    }
   }
 
   &:hover {
@@ -61,26 +98,38 @@ const StyledNavLink = styled(NavLink)`
 //============================================
 
 const Footer = () => {
+  const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
+  const isXSDevice = useMediaQuery("only screen and (max-width : 320px)");
+
   return (
     <footer>
       <Social />
       <BackgroundColor>
         <Container>
-          <Column $gap="1.5rem">
+          <Column $gap={isSmallDevice ? "1rem" : "1.5rem"}>
             <H6>CONTACT US</H6>
-            <Column $gap="1.5rem">
+            <Column $gap={isSmallDevice ? "1rem" : "1.5rem"}>
               <FlexLink href="mailto:support@hfeu.com<">
-                <AiOutlineMail color="#b91c1c" size="2rem" />{" "}
+                <AiOutlineMail
+                  color="#b91c1c"
+                  size={isSmallDevice ? "1.5rem" : "2rem"}
+                />{" "}
                 <span>support@hfeu.com</span>
               </FlexLink>
 
               <FlexLink href="tel:357-24-400165">
-                <AiOutlinePhone color="#b91c1c" size="2rem" />
+                <AiOutlinePhone
+                  color="#b91c1c"
+                  size={isSmallDevice ? "1.5rem" : "2rem"}
+                />
                 <span> +357-24-400165</span>
               </FlexLink>
 
               <FlexLink href="#">
-                <AiOutlineMessage color="#b91c1c" size="2rem" />{" "}
+                <AiOutlineMessage
+                  color="#b91c1c"
+                  size={isSmallDevice ? "1.5rem" : "2rem"}
+                />{" "}
                 <span>Live Chat</span>
               </FlexLink>
             </Column>
@@ -88,7 +137,10 @@ const Footer = () => {
           <FlexContainer>
             <Column $gap="1rem">
               <H6>ABOUT</H6>
-              <Column $gap="0.2rem">
+              <Column
+                $gap="0.2rem"
+                $mr={isSmallDevice && !isXSDevice ? "3rem" : ""}
+              >
                 <StyledNavLink to="/about">About HotForex</StyledNavLink>
                 <StyledNavLink to="/about">Why HotForex</StyledNavLink>
                 <StyledNavLink to="/about">
@@ -108,7 +160,16 @@ const Footer = () => {
                 <StyledNavLink to="/products">Commodity CFDs</StyledNavLink>
               </Column>
             </Column>
-            <Column $gap="1rem">
+            <Column
+              $gap="1rem"
+              $mr={
+                isSmallDevice && !isXSDevice
+                  ? "4.5rem"
+                  : isXSDevice
+                  ? "1.5rem"
+                  : ""
+              }
+            >
               <H6>TRADING</H6>
               <Column $gap="0.2rem">
                 <StyledNavLink to="/tools">Trading Tools</StyledNavLink>

@@ -18,6 +18,12 @@ const Column = styled.div`
     css`
       align-self: flex-start;
     `}
+
+    ${(props) =>
+    props.$mr &&
+    css`
+      margin-right: ${props.$mr};
+    `}
 `;
 
 export default Column;
