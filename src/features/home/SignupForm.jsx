@@ -54,18 +54,27 @@ const CheckBoxError = styled.div`
   color: var(--color-red-700);
   @media (${devices.xl}) {
     position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 255px;
     bottom: 4.5rem;
-    left: 38rem;
+  }
+  @media (${devices.lg}) {
+    bottom: 4.7rem;
   }
   @media (${devices.md}) {
     bottom: 5rem;
-    left: 25rem;
   }
   @media (${devices.sm}) {
     font-size: 0.8rem;
     font-weight: 600;
     bottom: 4.5rem;
-    left: 7.5rem;
+  }
+
+  @media (${devices.mobileL}) {
+    bottom: 4.3rem;
   }
 `;
 
@@ -76,22 +85,24 @@ const CheckBoxContainer = styled.div`
   height: 41px;
   @media (${devices.xl}) {
     position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 255px;
+    bottom: 8rem;
+  }
+
+  @media (${devices.lg}) {
     bottom: 7rem;
-    left: 38rem;
   }
 
   @media (${devices.md}) {
     bottom: 8rem;
-    left: 25rem;
   }
 
   @media (${devices.sm}) {
     bottom: 6.2rem;
-    left: 7.5rem;
-  }
-  @media (${devices.xs}) {
-    bottom: 6.2rem;
-    left: 3.5rem;
   }
 `;
 

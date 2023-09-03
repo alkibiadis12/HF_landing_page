@@ -46,6 +46,9 @@ const Span = styled.span`
   @media (${devices.sm}) {
     font-size: 1rem;
   }
+  @media (${devices.xxs}) {
+    font-size: 0.8rem;
+  }
 `;
 
 //============================================

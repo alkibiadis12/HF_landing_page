@@ -103,8 +103,15 @@ const P = styled.p`
 `;
 
 const Image = styled.img`
+  @media (${devices.lg}) {
+    width: 25rem;
+    height: fit-content;
+    align-self: center;
+  }
   @media (${devices.md}) {
     width: 20rem;
+    height: auto;
+    align-self: auto;
   }
   @media (${devices.sm}) {
     width: 15rem;

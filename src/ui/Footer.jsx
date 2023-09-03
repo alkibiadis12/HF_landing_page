@@ -1,6 +1,5 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { NavLink } from "react-router-dom";
-import Column from "./Column";
 import Social from "./Social";
 import {
   AiOutlineMail,
@@ -28,8 +27,11 @@ const Container = styled.div`
   @media (${devices.xl}) {
     padding: 4rem 4rem 20rem 4rem;
   }
+  @media (${devices.lg}) {
+    padding: 4rem 0rem 20rem 3rem;
+  }
   @media (${devices.md}) {
-    padding: 4rem 0 18rem 0;
+    padding: 4rem 0rem 18rem 0rem;
     height: 60rem;
     gap: 5rem;
     margin-left: 7rem;
@@ -42,7 +44,36 @@ const Container = styled.div`
   }
   @media (${devices.mobileL}) {
     height: 55rem;
+    margin-left: 7.5rem;
   }
+  @media (${devices.xs}) {
+    height: 55rem;
+    margin-left: 5.5rem;
+  }
+  @media (${devices.xxs}) {
+    height: 50rem;
+    margin-left: 5.5rem;
+  }
+`;
+
+const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  ${(props) =>
+    props.$gap
+      ? css`
+          gap: ${props.$gap};
+        `
+      : css`
+          gap: 3rem;
+        `}
+
+  ${(props) =>
+    props.$mr &&
+    css`
+      margin-right: ${props.$mr};
+    `}
 `;
 
 const H6 = styled.h6`
@@ -61,9 +92,14 @@ const FlexContainer = styled.div`
   @media (${devices.xl}) {
     gap: 2rem;
   }
+
   @media (${devices.md}) {
     flex-wrap: wrap;
     gap: 3.5rem;
+  }
+  @media (${devices.xxs}) {
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 `;
 
@@ -73,6 +109,12 @@ const FlexLink = styled.a`
   gap: 1.5rem;
   font-size: 1.4rem;
   color: var(--color-grey-300);
+  @media (${devices.lg}) {
+    font-size: 1.2rem;
+  }
+  @media (${devices.md}) {
+    font-size: 1.4rem;
+  }
   @media (${devices.sm}) {
     font-size: 1rem;
     gap: 1rem;
@@ -85,6 +127,12 @@ const StyledNavLink = styled(NavLink)`
     color: var(--color-grey-300);
     font-size: 1.4rem;
     transition: all 0.3s;
+    @media (${devices.lg}) {
+      font-size: 1.2rem;
+    }
+    @media (${devices.md}) {
+      font-size: 1.4rem;
+    }
     @media (${devices.sm}) {
       font-size: 0.8rem;
     }

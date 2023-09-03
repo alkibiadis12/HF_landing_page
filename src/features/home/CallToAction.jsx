@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import Column from "../../ui/Column";
 import AppStoreIcon from "../../ui/AppStoreIcon";
 import GooglePlayIcon from "../../ui/GooglePlayIcon";
 import { devices } from "../../styles/breakpoints";
@@ -26,6 +25,12 @@ const StoreContainer = styled.div`
   gap: 2rem;
 `;
 
+const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
 const P = styled.p`
   font-size: 1.8rem;
   font-weight: 500;
@@ -36,6 +41,9 @@ const P = styled.p`
   }
   @media (${devices.sm}) {
     font-size: 1rem;
+  }
+  @media (${devices.xs}) {
+    font-size: 0.9rem;
   }
 `;
 

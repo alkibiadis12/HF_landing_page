@@ -19,6 +19,13 @@ const StyledHero = styled.section`
   @media (${devices.xl}) {
     height: 39.5rem;
   }
+  @media (${devices.lg}) {
+    height: 34.5rem;
+  }
+  @media (${devices.ipad_air}) {
+    height: 47rem;
+  }
+
   @media (${devices.md}) {
     height: 56.8rem;
   }
@@ -31,6 +38,9 @@ const StyledHero = styled.section`
   }
   @media (${devices.xs}) {
     height: 41rem;
+  }
+  @media (${devices.xxs}) {
+    height: 44rem;
   }
 `;
 
@@ -107,6 +117,10 @@ const MobileImage = styled.img`
     margin-right: 0;
     align-self: flex-end;
   }
+  @media (${devices.lg}) {
+    height: 20rem;
+  }
+
   @media (${devices.md}) {
     height: 20rem;
     margin-right: 0;
@@ -115,6 +129,9 @@ const MobileImage = styled.img`
   }
   @media (${devices.sm}) {
     height: 13.8rem;
+  }
+  @media (${devices.xxs}) {
+    height: 10rem;
   }
 `;
 
