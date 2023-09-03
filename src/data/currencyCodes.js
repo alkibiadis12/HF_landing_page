@@ -1,0 +1,26 @@
+const currencyCodes = [
+  "USD",
+  "EUR",
+  "GBP",
+  "JPY",
+  "CAD",
+  "AUD",
+  "CHF",
+  "CNY",
+  "INR",
+  "BRL",
+  "ZAR",
+  "MXN",
+  "SGD",
+  "HKD",
+  "NZD",
+  "SEK",
+  "NOK",
+  "KRW",
+  "RUB",
+  "SAR",
+  "AED",
+  "TRY",
+];
+
+export default currencyCodes;
